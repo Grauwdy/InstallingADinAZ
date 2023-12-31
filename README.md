@@ -3,7 +3,7 @@
 </p>
 
 <h1>Installing Active Directory in Azure</h1>
-This lab demonstrates the steps I took to install Active Directory using Azure. I will be using this as the foundation for labs I will do in the future. I will be using two VMs on Azure that are on the same vnet. This particular lab will focus on just one of the VMs, which will be used to install Active Directory and configured to be the domain controller. The other VM will be used as a client that will join later in a future lab. <br />
+In this lab, I'll walk you through the steps I took to set up Active Directory using Azure. Think of it as the starting point for some cool labs I've got planned ahead. We're working with two Virtual Machines on Azure, hanging out in the same virtual network. For now, our focus is on one VM—it's going to be our hero, installing Active Directory and becoming the domain controller. The other VM? Well, it's gearing up to join the adventure in a future lab as our trusty client. <br />
 
 <h2>Environments and Technologies Used</h2>
 
@@ -22,7 +22,9 @@ This lab demonstrates the steps I took to install Active Directory using Azure. 
 <img src="https://i.imgur.com/dOOE9KD.png" height="80%" width="80%" alt="Installation Steps"/>
 </p>
 <p>
-Before using the VMs, it is important to set the domain controller VM's IP address as static. By default, the VMs will not be able to communicate with each other if both have dynamic IPs despite being on the same vnet. If we do not make the necessary change, the client will not be able to join the domain that will be created later. On the Azure portal, click on the Networking tab on the domain controller VM. Click on the Network Interface and open the IP configurations tab. Toggle the Assignment switch to be Static and save your changes. We are making sure the domain controller has a static IP and it will be used as a reference when we make configurations.
+Before diving into the VMs, it's crucial to lock in the domain controller VM's IP address as static. By default, if both VMs sport dynamic IPs, even on the same vnet, they won't be able to chit-chat. Without this tweak, our client won't be able to cozy up to the domain we're planning to whip up later.
+
+Head over to the Networking tab for the domain controller VM. Click on the Network Interface and peek at the IP configurations tab. See that Assignment switch? Give it a little toggle to Static, and don't forget to save your changes. This simple step ensures our domain controller boasts a steadfast IP, playing the role of a rock-solid reference point as we get into the nitty-gritty of configurations.
 </p>
 <br />
 
