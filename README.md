@@ -24,7 +24,7 @@ In this lab, I'll walk you through the steps I took to set up Active Directory u
 <p>
 Before diving into the VMs, it's crucial to lock in the domain controller VM's IP address as static. By default, if both VMs sport dynamic IPs, even on the same vnet, they won't be able to chit-chat. Without this tweak, our client won't be able to cozy up to the domain we're planning to whip up later.
 
-Head over to the Networking tab for the domain controller VM. Click on the Network Interface and peek at the IP configurations tab. Click on the ipcofig, and don't forget to save your changes. This simple step ensures our domain controller boasts a steadfast IP, playing the role of a rock-solid reference point as we get into the nitty-gritty of configurations.
+Head over to the Networking tab for the domain controller VM. Click on the Network Interface and peek at the IP configurations tab. Click on the ipcofig a side pane should open to make your edit select the static bubble, don't forget to save your changes. This simple step ensures our domain controller boasts a steadfast IP, playing the role of a rock-solid reference point as we get into the nitty-gritty of configurations.
 </p>
 <br />
 
@@ -34,7 +34,7 @@ Head over to the Networking tab for the domain controller VM. Click on the Netwo
 <img src="https://i.imgur.com/IbIJWiC.png" height="80%" width="80%" alt="Installation Steps"/>
 </p>
 <p>
-After setting the static IP, it is time to log in to the client VM and see if there is connectivity to the domain controller. Using ping -t (domain controller private ip address), will show that the connection is being timed out. On the domain controller VM, we need to enable ICMPv4 on the local Windows Firewall. Within the search bar, type wf.msc to open Windows Defender Firewall. Click on Inbound Rules and enable the Core Networking Diagnostics - ICMP Echo Request rules. Returning to the client VM will show that the ping is now resolving without errors.
+After configuring the static IP, it's time to check connectivity from the client VM to the domain controller. Running ping -t with the domain controller's private IP may initially result in timeout errors. To resolve this, on the domain controller VM, enable ICMPv4 in the local Windows Firewall. Use the wf.msc command in the search bar, navigate to Inbound Rules, and activate the Core Networking Diagnostics - ICMP Echo Request rules. Returning to the client VM should now show successful ping responses without errors.
 </p>
 <br />
 
@@ -42,11 +42,20 @@ After setting the static IP, it is time to log in to the client VM and see if th
 <img src="https://i.imgur.com/88hBLx8.png" height="80%" width="80%" alt="Installation Steps"/>
 </p>
 <p>
-It is now time to install Active Directory on the domain controller VM. With Server Manager open, click on Add Roles and Features and click Next. Confirm the private IP address of the domain controller VM. In the Server Roles tab, click on Active Directory Domain Services. Click Add Features, click Next, then Install. Next we have to promote the server into a domain controller. In Server Manager, there is a warning sign in the top right corner under a flag. Click on that flag and click Promote this server to a domain controller. Click on Add a new forest and specify a domain name. In my case, I will use alaingarciadomain.com Specify a password for the domain and click on Next on each screen and Install.
+Time to install Active Directory on the domain controller VM. Here's the quick rundown:
+
+Open Server Manager, select "Add Roles and Features," and hit Next.
+Confirm the private IP address of the domain controller VM.
+Under the Server Roles tab, click on "Active Directory Domain Services." Add Features, click Next, then Install.
+Now, let's promote the server to a domain controller:
+
+In Server Manager, spot the warning sign in the top right corner under a flag.
+Click on the flag and select "Promote this server to a domain controller."
+Opt for "Add a new forest" and specify a domain name. For example, alaingarciadomain.com.
+Set a password for the domain, click Next on each screen, and hit Install. That's it!
 </p>
 <br />
 
 <h2>An Important Note </h2>
 
-When logging back in to the domain controller VM through Remote Desktop Connection, it is important to log in with the context of the domain. Type out the domain path and then the name of the user. For example: mydomain.com\labuser. In my case, it is alaingarciadomain.com\labuser1. Now that Active Directory is installed, configurations can be implemented in future labs and the client VM will be able to join the domain that was created.
-
+When reconnecting to the domain controller VM via Remote Desktop Connection, remember to log in within the context of the domain. Input the domain path followed by the username. For instance: mydomain.com\labuser. In my scenario, it's alaingarciadomain.com\labuser1. With Active Directory in place, you're all set to dive into configurations in upcoming labs, and the client VM can smoothly join the newly created domain.
