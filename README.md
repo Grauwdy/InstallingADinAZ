@@ -24,7 +24,7 @@ In this lab, I'll walk you through the steps I took to set up Active Directory u
 <p>
 Before diving into the VMs, it's crucial to lock in the domain controller VM's IP address as static. By default, if both VMs sport dynamic IPs, even on the same vnet, they won't be able to chit-chat. Without this tweak, our client won't be able to cozy up to the domain we're planning to whip up later.
 
-Head over to the Networking tab for the domain controller VM. Click on the Network Interface and peek at the IP configurations tab. See that Assignment switch? Give it a little toggle to Static, and don't forget to save your changes. This simple step ensures our domain controller boasts a steadfast IP, playing the role of a rock-solid reference point as we get into the nitty-gritty of configurations.
+Head over to the Networking tab for the domain controller VM. Click on the Network Interface and peek at the IP configurations tab. Click on the ipcofig, and don't forget to save your changes. This simple step ensures our domain controller boasts a steadfast IP, playing the role of a rock-solid reference point as we get into the nitty-gritty of configurations.
 </p>
 <br />
 
